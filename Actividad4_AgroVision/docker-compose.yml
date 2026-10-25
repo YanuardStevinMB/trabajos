@@ -1,0 +1,10 @@
+services:
+  agrovision:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - agrovision_data:/app/data
+    restart: unless-stopped
+volumes:
+  agrovision_data:
