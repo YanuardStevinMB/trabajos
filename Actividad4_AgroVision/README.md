@@ -17,7 +17,7 @@ Prototipo de la **Actividad 4 - Diseño del prototipo** de la asignatura Proyect
 
 ## Instalación rápida con Python
 
-Requisitos: Python 3.12+.
+Requisitos: Python 3.12 a 3.14.
 
 ```bash
 python -m venv .venv
@@ -26,6 +26,7 @@ python -m venv .venv
 # Linux/macOS
 source .venv/bin/activate
 
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
@@ -33,6 +34,27 @@ uvicorn app.main:app --reload
 Abrir: `http://localhost:8000`
 
 API: `http://localhost:8000/docs`
+
+### Nota para Python 3.14 en Windows
+
+El proyecto usa **Pillow 13.0.0**, que dispone de binarios precompilados para Python 3.14 en Windows. Si habías clonado una versión anterior del proyecto y apareció un error de compilación de Pillow/zlib, actualiza la rama y recrea el entorno virtual:
+
+```powershell
+git pull
+deactivate
+Remove-Item -Recurse -Force .venv
+python -m venv .venv
+.venv\Scripts\activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+En CMD, para eliminar el entorno anterior usa:
+
+```cmd
+rmdir /s /q .venv
+```
 
 ## Instalación con Docker
 
